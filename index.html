@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Game</title>
+</head>
+<body>
+    <h1>Bat Ball Stump Game</h1>
+    <div class="container">
+        <button onclick="play('Bat')">Bat</button>
+        <button onclick="play('Ball')">Ball</button>
+        <button onclick="play('Stump')">Stump</button>
+    </div>
+
+    <script>
+        function play(userChoice) {
+            const userMsg = `You have chosen ${userChoice}`;
+            let randomNumber = Math.random() * 3;
+            let computerChoice;
+            if (randomNumber > 0 && randomNumber <= 1) {
+                computerChoice = 'Bat';
+            } else if (randomNumber > 1 && randomNumber <= 2) {
+                computerChoice = 'Ball';
+            } else {
+                computerChoice = 'Stump';
+            }
+            const compmsg = `Computer choice is ${computerChoice}`;
+            let res;
+            if (computerChoice === userChoice) {
+                res = 'It\'s a tie';
+            } else if ((computerChoice === 'Bat' && userChoice === 'Ball') ||
+                       (computerChoice === 'Ball' && userChoice === 'Stump') ||
+                       (computerChoice === 'Stump' && userChoice === 'Bat')) {
+                res = 'User won.';
+            } else {
+                res = 'Computer won.';
+            }
+            alert(`${userMsg}\n${compmsg}\n${res}`);
+        }
+    </script>
+</body>
+</html>
